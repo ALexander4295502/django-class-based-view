@@ -7,13 +7,17 @@ from django.views.generic import (
 from . import models
 
 
-class TeamListView(ListView):
+class TeamListView(CreateView, ListView):
     model = models.Team
+    fields = ("name", "practice_location", "coach")
     context_object_name = 'teams'
+    template_name = "teams/team_list.html"
 
 
-class TeamDetailView(DetailView):
+class TeamDetailView(DetailView, UpdateView):
+    fields = ("name", "practice_location", "coach")
     model = models.Team
+    template_name = "teams/team_detail.html"
 
 
 class TeamCreateView(CreateView):

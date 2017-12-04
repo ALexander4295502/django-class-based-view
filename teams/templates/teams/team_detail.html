@@ -11,7 +11,16 @@
 	<li>{{ player.name }} - {{ player.get_position_display }}</li>
 {% endfor %}
 </ul>
+
 <hr>
+{% if user == team.coach %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-primary" value="Save">
+    </form>
+<hr>
+{% endif %}
 <p>
     <a href="{% url 'teams:update' pk=team.pk %}" class="btn">Edit</a>
 </p>
