@@ -2,11 +2,7 @@
 
 {% block body_content %}
     <h1>
-        {% if not form.instance.pk %}
-            Create Team
-        {% else %}
-            Edit {{ form.instance.name }}
-        {% endif %}
+        {{ page_title }}
     </h1>
 
     <form method="POST">
